@@ -32,28 +32,23 @@ module.exports = {
     type: 'confirm',
     name: 'wantActionsAndReducer',
     default: true,
-    message: 'Do you want an actions/constants/selectors/reducer tupel for this container?',
+    message: 'Do you want an actions/constants/selectors/reducer tuple for this container?',
   }, {
     type: 'confirm',
     name: 'wantSagas',
     default: true,
     message: 'Do you want sagas for asynchronous flows? (e.g. fetching data)',
-  }, {
-    type: 'confirm',
-    name: 'wantMessages',
-    default: true,
-    message: 'Do you want i18n messages (i.e. will this component use text)?',
   }],
   actions: (data) => {
     // Generate index.js and index.test.js
     const actions = [{
       type: 'add',
-      path: '../../app/containers/{{properCase name}}/index.js',
+      path: '../../app/components/{{properCase name}}/index.js',
       templateFile: './container/index.js.hbs',
       abortOnFail: true,
     }, {
       type: 'add',
-      path: '../../app/containers/{{properCase name}}/tests/index.test.js',
+      path: '../../app/components/{{properCase name}}/tests/index.test.js',
       templateFile: './container/test.js.hbs',
       abortOnFail: true,
     }];
@@ -62,18 +57,8 @@ module.exports = {
     if (data.wantCSS) {
       actions.push({
         type: 'add',
-        path: '../../app/containers/{{properCase name}}/styles.css',
+        path: '../../app/components/{{properCase name}}/styles.css',
         templateFile: './container/styles.css.hbs',
-        abortOnFail: true,
-      });
-    }
-
-    // If component wants messages
-    if (data.wantMessages) {
-      actions.push({
-        type: 'add',
-        path: '../../app/containers/{{properCase name}}/messages.js',
-        templateFile: './container/messages.js.hbs',
         abortOnFail: true,
       });
     }
@@ -84,13 +69,13 @@ module.exports = {
       // Actions
       actions.push({
         type: 'add',
-        path: '../../app/containers/{{properCase name}}/actions.js',
+        path: '../../app/components/{{properCase name}}/actions.js',
         templateFile: './container/actions.js.hbs',
         abortOnFail: true,
       });
       actions.push({
         type: 'add',
-        path: '../../app/containers/{{properCase name}}/tests/actions.test.js',
+        path: '../../app/components/{{properCase name}}/tests/actions.test.js',
         templateFile: './container/actions.test.js.hbs',
         abortOnFail: true,
       });
@@ -98,7 +83,7 @@ module.exports = {
       // Constants
       actions.push({
         type: 'add',
-        path: '../../app/containers/{{properCase name}}/constants.js',
+        path: '../../app/components/{{properCase name}}/constants.js',
         templateFile: './container/constants.js.hbs',
         abortOnFail: true,
       });
@@ -106,13 +91,13 @@ module.exports = {
       // Selectors
       actions.push({
         type: 'add',
-        path: '../../app/containers/{{properCase name}}/selectors.js',
+        path: '../../app/components/{{properCase name}}/selectors.js',
         templateFile: './container/selectors.js.hbs',
         abortOnFail: true,
       });
       actions.push({
         type: 'add',
-        path: '../../app/containers/{{properCase name}}/tests/selectors.test.js',
+        path: '../../app/components/{{properCase name}}/tests/selectors.test.js',
         templateFile: './container/selectors.test.js.hbs',
         abortOnFail: true,
       });
@@ -120,13 +105,13 @@ module.exports = {
       // Reducer
       actions.push({
         type: 'add',
-        path: '../../app/containers/{{properCase name}}/reducer.js',
+        path: '../../app/components/{{properCase name}}/reducer.js',
         templateFile: './container/reducer.js.hbs',
         abortOnFail: true,
       });
       actions.push({
         type: 'add',
-        path: '../../app/containers/{{properCase name}}/tests/reducer.test.js',
+        path: '../../app/components/{{properCase name}}/tests/reducer.test.js',
         templateFile: './container/reducer.test.js.hbs',
         abortOnFail: true,
       });
@@ -136,13 +121,13 @@ module.exports = {
     if (data.wantSagas) {
       actions.push({
         type: 'add',
-        path: '../../app/containers/{{properCase name}}/sagas.js',
+        path: '../../app/components/{{properCase name}}/sagas.js',
         templateFile: './container/sagas.js.hbs',
         abortOnFail: true,
       });
       actions.push({
         type: 'add',
-        path: '../../app/containers/{{properCase name}}/tests/sagas.test.js',
+        path: '../../app/components/{{properCase name}}/tests/sagas.test.js',
         templateFile: './container/sagas.test.js.hbs',
         abortOnFail: true,
       });

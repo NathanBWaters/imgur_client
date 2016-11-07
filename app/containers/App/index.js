@@ -14,6 +14,9 @@
 import React from 'react';
 
 import styles from './styles.css';
+import 'bootstrap-css-only/css/bootstrap.min.css';
+import Header from 'components/Header'
+import Footer from 'components/Footer'
 
 export default class App extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -24,7 +27,9 @@ export default class App extends React.Component { // eslint-disable-line react/
   render() {
     return (
       <div className={styles.container}>
+        <Header />
         {React.Children.toArray(this.props.children)}
+        <Footer />
       </div>
     );
   }
